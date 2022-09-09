@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+    <style>
+        img {
+            position:relative;
+            left:500px;
+            top:5px;
+        }
+        form {
+            text-align: center;
+            padding-top: 15px;
+            padding-right: 75px;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+    <h2>{{url.title}}</h2>    
+    <img src="{{url.thumbnail_url}}" alt="{{url.title}} thumbnail" width="300" height="200"> 
+    <form action="{{url_for('ydownload')}}" method="POST">
+        <select name="itag">
+            {% for i in url.streams.filter(progressive=True) %}
+            <option value="{{i.itag}}">{{i.resolution}}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Download</button>
+    </form>
+{% endblock %}

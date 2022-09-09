@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block title %}Error{% endblock %}
+{% block content %}
+    <style>
+        p {
+            font-size: 200%;
+        }
+    </style>
+    <p>Error link not found, please <a href="{{ url_for('home') }}">try again.</a>
+{% endblock %}
